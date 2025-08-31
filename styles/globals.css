@@ -1,43 +1,42 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color tokens to match jungle theme design brief */
-  --background: oklch(1 0 0); /* Pure white background */
-  --foreground: oklch(0.45 0.15 142); /* Jungle green foreground */
-  --card: oklch(0.97 0.01 240); /* Light gray for cards */
-  --card-foreground: oklch(0.45 0.15 142); /* Jungle green text on cards */
-  --popover: oklch(0.98 0.005 240); /* Semi-transparent white */
-  --popover-foreground: oklch(0.25 0.02 240); /* Dark text for popovers */
-  --primary: oklch(0.55 0.18 142); /* Primary jungle green */
-  --primary-foreground: oklch(1 0 0); /* White text on primary */
-  --secondary: oklch(0.85 0.12 85); /* Accent yellow */
-  --secondary-foreground: oklch(0.45 0.15 142); /* Green text on secondary */
-  --muted: oklch(0.97 0.01 240); /* Light gray for muted elements */
-  --muted-foreground: oklch(0.55 0.02 240); /* Darker gray for muted text */
-  --accent: oklch(0.85 0.12 85); /* Accent yellow */
-  --accent-foreground: oklch(0.45 0.15 142); /* Green accent text */
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.92 0.01 240); /* Light gray borders */
-  --input: oklch(0.97 0.01 240); /* Light gray inputs */
-  --ring: oklch(0.55 0.18 142 / 0.5); /* Soft green ring for focus */
-  --chart-1: oklch(0.55 0.18 142); /* Chart color green */
-  --chart-2: oklch(0.85 0.12 85); /* Chart color yellow */
-  --chart-3: oklch(0.577 0.245 27.325); /* Chart color red */
-  --chart-4: oklch(0.6 0.118 184.704); /* Chart color blue */
-  --chart-5: oklch(0.769 0.188 70.08); /* Chart color orange */
-  --radius: 0.5rem;
-  --sidebar: oklch(0.55 0.18 142); /* Green sidebar */
-  --sidebar-foreground: oklch(1 0 0); /* White text in sidebar */
-  --sidebar-primary: oklch(0.55 0.18 142); /* Primary green */
-  --sidebar-primary-foreground: oklch(1 0 0); /* Sidebar text */
-  --sidebar-accent: oklch(0.85 0.12 85); /* Sidebar accent yellow */
-  --sidebar-accent-foreground: oklch(0.45 0.15 142); /* Sidebar accent text */
-  --sidebar-border: oklch(0.92 0.01 240); /* Light gray for sidebar borders */
-  --sidebar-ring: oklch(0.55 0.18 142 / 0.5); /* Soft green ring for sidebar focus */
+  --destructive-foreground: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -123,55 +122,4 @@
   body {
     @apply bg-background text-foreground;
   }
-}
-
-/* Added custom jungle-themed animations and styles */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes bounce-gentle {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes leaf-sway {
-  0%,
-  100% {
-    transform: rotate(-2deg);
-  }
-  50% {
-    transform: rotate(2deg);
-  }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-.animate-bounce-gentle {
-  animation: bounce-gentle 2s ease-in-out infinite;
-}
-
-.animate-leaf-sway {
-  animation: leaf-sway 4s ease-in-out infinite;
-}
-
-.jungle-gradient {
-  background: linear-gradient(135deg, oklch(0.65 0.15 142) 0%, oklch(0.55 0.18 142) 50%, oklch(0.45 0.2 140) 100%);
-}
-
-.tropical-shadow {
-  box-shadow: 0 10px 25px -5px oklch(0.45 0.15 142 / 0.3), 0 4px 6px -2px oklch(0.45 0.15 142 / 0.1);
 }
