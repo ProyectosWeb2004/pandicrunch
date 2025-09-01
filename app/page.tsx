@@ -5,6 +5,8 @@ import { JungleStorySection } from "@/components/jungle-story-section"
 import { StudentLifeSection } from "@/components/student-life-section"
 import { Footer } from "@/components/footer"
 import { LoginModal } from "@/components/login-modal"
+// Importa el icono de usuario de lucide-react
+import { User } from "lucide-react"
 
 export default function Home() {
   return (
@@ -31,7 +33,19 @@ export default function Home() {
               Estudiantes
             </a>
           </div>
-          <LoginModal />
+          {/* Pantallas grandes: botón normal */}
+          <div className="hidden md:block">
+            <LoginModal />
+          </div>
+          {/* Pantallas pequeñas: solo icono */}
+          <div className="md:hidden">
+            <button
+              className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition"
+              aria-label="Iniciar sesión"
+            >
+              <User className="w-7 h-7 text-primary" />
+            </button>
+          </div>
         </div>
       </nav>
 
