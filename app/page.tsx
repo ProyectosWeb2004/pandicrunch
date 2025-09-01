@@ -5,7 +5,6 @@ import { JungleStorySection } from "@/components/jungle-story-section"
 import { StudentLifeSection } from "@/components/student-life-section"
 import { Footer } from "@/components/footer"
 import { LoginModal } from "@/components/login-modal"
-import { LogIn } from "lucide-react"
 
 export default function Home() {
   return (
@@ -32,26 +31,7 @@ export default function Home() {
               Estudiantes
             </a>
           </div>
-          {/* Solo icono en móvil, botón completo en desktop */}
-          <div>
-            <div className="md:hidden flex items-center">
-              <button
-                aria-label="Iniciar Sesión"
-                onClick={() => {
-                  const el = document.querySelector('[data-login-modal-trigger]');
-                  if (el && typeof (el as HTMLButtonElement).click === "function") {
-                    (el as HTMLButtonElement).click();
-                  }
-                }}
-                className="p-2 rounded-full hover:bg-primary/10 transition"
-              >
-                <LogIn className="w-6 h-6 text-primary" />
-              </button>
-            </div>
-            <div className="hidden md:block">
-              <LoginModal />
-            </div>
-          </div>
+          <LoginModal />
         </div>
       </nav>
 
