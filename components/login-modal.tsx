@@ -9,29 +9,52 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { User, Mail, Lock, LogIn } from "lucide-react"
+import { auth, db } from "../firebase"
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth"
+import { doc, setDoc } from "firebase/firestore"
 
 export function LoginModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // TODO: Implement Firebase authentication
-    setTimeout(() => {
-      setIsLoading(false)
+    setError(null)
+    const email = (document.getElementById("email") as HTMLInputElement)?.value
+    const password = (document.getElementById("password") as HTMLInputElement)?.value
+    try {
+      await signInWithEmailAndPassword(auth, email, password)
       setIsOpen(false)
-    }, 1000)
+    } catch (err: any) {
+      setError(err.message || "Error al iniciar sesión")
+    }
+    setIsLoading(false)
   }
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    // TODO: Implement Firebase registration
-    setTimeout(() => {
-      setIsLoading(false)
+    setError(null)
+    const name = (document.getElementById("name") as HTMLInputElement)?.value
+    const email = (document.getElementById("register-email") as HTMLInputElement)?.value
+    const password = (document.getElementById("register-password") as HTMLInputElement)?.value
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+      const user = userCredential.user
+      // Guarda los datos en Firestore
+      await setDoc(doc(db, "usuarios", user.uid), {
+        uid: user.uid,
+        nombre: name,
+        email: user.email,
+        creado: new Date().toISOString()
+      })
       setIsOpen(false)
-    }, 1000)
+    } catch (err: any) {
+      setError(err.message || "Error al registrar")
+    }
+    setIsLoading(false)
   }
 
   return (
@@ -88,6 +111,7 @@ export function LoginModal() {
                   />
                 </div>
               </div>
+              {error && <div className="text-red-600 text-sm text-center">{error}</div>}
               <Button
                 type="submit"
                 className="w-full jungle-gradient rounded-full shadow-lg font-bold py-2"
@@ -138,6 +162,7 @@ export function LoginModal() {
                   />
                 </div>
               </div>
+              {error && <div className="text-red-600 text-sm text-center">{error}</div>}
               <Button
                 type="submit"
                 className="w-full jungle-gradient rounded-full shadow-lg font-bold py-2"

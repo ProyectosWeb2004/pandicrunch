@@ -25,7 +25,7 @@ const storySteps = [
     title: "Proceso Artesanal",
     description:
       "Cada lote es procesado artesanalmente por familias peruanas, manteniendo tradiciones ancestrales que garantizan la máxima calidad y frescura.",
-    image: "/peruvian-families-processing-cashews-traditionally.png",
+    image: "/images/proceso.jpg",
   },
   {
     icon: Leaf,
