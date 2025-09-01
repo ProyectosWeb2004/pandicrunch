@@ -5,7 +5,7 @@ import { JungleStorySection } from "@/components/jungle-story-section"
 import { StudentLifeSection } from "@/components/student-life-section"
 import { Footer } from "@/components/footer"
 import { LoginModal } from "@/components/login-modal"
-import { Utensils, Apple, BookOpen, Users } from "lucide-react"
+import { LogIn } from "lucide-react"
 
 export default function Home() {
   return (
@@ -18,7 +18,6 @@ export default function Home() {
               PANDICRUNCH
             </span>
           </div>
-          {/* Menú para pantallas grandes */}
           <div className="hidden md:flex items-center gap-8 text-sm font-semibold text-primary/80">
             <a href="#producto" className="hover:text-secondary hover:scale-105 transition-all duration-200 px-2 py-1 rounded-lg">
               Producto
@@ -33,22 +32,26 @@ export default function Home() {
               Estudiantes
             </a>
           </div>
-          {/* Menú para pantallas pequeñas */}
-          <div className="flex md:hidden items-center gap-4 text-primary">
-            <a href="#producto" aria-label="Producto" className="p-2 rounded-full hover:bg-primary/10 transition">
-              <Utensils className="w-6 h-6" />
-            </a>
-            <a href="#nutricion" aria-label="Nutrición" className="p-2 rounded-full hover:bg-primary/10 transition">
-              <Apple className="w-6 h-6" />
-            </a>
-            <a href="#historia" aria-label="Historia" className="p-2 rounded-full hover:bg-primary/10 transition">
-              <BookOpen className="w-6 h-6" />
-            </a>
-            <a href="#estudiantes" aria-label="Estudiantes" className="p-2 rounded-full hover:bg-primary/10 transition">
-              <Users className="w-6 h-6" />
-            </a>
+          {/* Solo icono en móvil, botón completo en desktop */}
+          <div>
+            <div className="md:hidden flex items-center">
+              <button
+                aria-label="Iniciar Sesión"
+                onClick={() => {
+                  const el = document.querySelector('[data-login-modal-trigger]');
+                  if (el && typeof (el as HTMLButtonElement).click === "function") {
+                    (el as HTMLButtonElement).click();
+                  }
+                }}
+                className="p-2 rounded-full hover:bg-primary/10 transition"
+              >
+                <LogIn className="w-6 h-6 text-primary" />
+              </button>
+            </div>
+            <div className="hidden md:block">
+              <LoginModal />
+            </div>
           </div>
-          <LoginModal />
         </div>
       </nav>
 
