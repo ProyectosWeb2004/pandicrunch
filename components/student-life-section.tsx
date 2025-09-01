@@ -70,12 +70,12 @@ export function StudentLifeSection() {
 				<div className="mb-20">
 					<Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-100/70 via-white/80 to-purple-100/70 rounded-3xl overflow-hidden relative p-0">
 						<CardContent className="p-0 relative">
-							<div className="relative w-full h-[45rem]">
+							<div className="relative h-[45rem]">
 								<Image
 									src="/images/students-uniform.png"
 									alt="Estudiantes motivados con PANDICRUNCH"
 									fill
-									className="object-cover w-full h-full"
+									className="object-cover h-full"
 									style={{ objectPosition: "center" }}
 									priority
 								/>
